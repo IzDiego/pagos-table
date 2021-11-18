@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
-import { useQuery, QueryClient } from "react-query";
 import useCuentas from "../hooks/useCuentas";
 import styled from "styled-components";
 
+export var filtraCuenta = {};
+
 export default function CuentaBancaria() {
+
   const [Cuenta, setCuenta] = useState("");
   const [ListaCuentas, setListaCuentas] = useState([]);
   const [ControlLista, setControl] = useState(0);
@@ -13,6 +15,8 @@ export default function CuentaBancaria() {
   var listaCuentas;
   if (isSuccess) {
     listaCuentas = cuenta.misDatos;
+    console.log("listaCuentas");
+    console.log(listaCuentas);
   }
   const handleInputChange = (e) => {
     setMensaje("");
@@ -39,8 +43,9 @@ export default function CuentaBancaria() {
       setControl((prevControl) => prevControl - 1);
     } else if (e.key === "Enter") {
       //      console.log(misDatos[ControlLista].Nombre)
-      setCuenta(listaCuentas[ControlLista].cuenta_bancaria_movimiento);
+      setCuenta(listaCuentas[ControlLista].cuenta_bancaria_movimiento_nombre);
       setControl(0);
+      filtraCuenta = Cuenta;
       document.getElementById("ListaCu").style.display = "none";
     }
   };
@@ -76,17 +81,17 @@ export default function CuentaBancaria() {
                   return (
                     <li
                       className="list-group-item"
-                      key={Dato.cuenta_bancaria_movimiento + i}
+                      key={Dato.cuenta_bancaria_movimiento_nombre + i}
                       onClick={() =>
-                        Clickenopciones(Dato.cuenta_bancaria_movimiento)
+                        Clickenopciones(Dato.cuenta_bancaria_movimiento_nombre)
                       }
-                      value={Dato.cuenta_bancaria_movimiento}
+                      value={Dato.cuenta_bancaria_movimiento_nombre}
                       style={{
                         display: i <= Limite ? "list-item" : "none",
                         background: i === ControlLista ? "aquamarine" : "gray",
                       }}
                     >
-                      {Dato.cuenta_bancaria_movimiento}{" "}
+                      {Dato.cuenta_bancaria_movimiento_nombre}{" "}
                     </li>
                   );
                 })}

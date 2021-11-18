@@ -4,14 +4,15 @@ import styled from "styled-components";
 import { headers } from "./utils/headers";
 import PagosTable from "./components/pagosTable";
 import usePagos from "./hooks/usePagos";
-import CuentaBancaria from "./components/CuentaBancaria"
+import CuentaBancaria, { filtraCuenta } from "./components/CuentaBancaria"
 
 export default function Home() {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const skips = (page - 1) * perPage;
+  console.log(filtraCuenta);
 
-  const { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
+  const { data, isLoading, error, isSuccess } = usePagos(skips, perPage, filtraCuenta);
 
   const lista = data ?? [];
   const pagos = lista.misDatos;
