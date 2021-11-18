@@ -14,7 +14,7 @@ export default function Home() {
 
   let { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
 
-  var lista = data = null;
+  var lista = data = {};
   var pagos = lista.misDatos;
   var contador = lista.contador;
 
