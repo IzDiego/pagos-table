@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { headers } from "../lib/utils/headers";
 import PagosTable from "./components/PagosTable";
-import usePagos from "./components/hooks/usePagos";
+import usePagos from "../lib/utils/hooks/usePagos";
 import CuentaBancaria from "./components/CuentaBancaria"
 
 export default function Home() {
