@@ -5,7 +5,6 @@ import styled from "styled-components";
 export var filtraCuenta = {};
 
 export default function CuentaBancaria() {
-
   const [Cuenta, setCuenta] = useState("");
   const [ListaCuentas, setListaCuentas] = useState([]);
   const [ControlLista, setControl] = useState(0);
@@ -15,8 +14,6 @@ export default function CuentaBancaria() {
   var listaCuentas;
   if (isSuccess) {
     listaCuentas = cuenta.misDatos;
-    console.log("listaCuentas");
-    console.log(listaCuentas);
   }
   const handleInputChange = (e) => {
     setMensaje("");
@@ -44,8 +41,10 @@ export default function CuentaBancaria() {
     } else if (e.key === "Enter") {
       //      console.log(misDatos[ControlLista].Nombre)
       setCuenta(listaCuentas[ControlLista].cuenta_bancaria_movimiento_nombre);
+      filtraCuenta = (listaCuentas[ControlLista].cuenta_bancaria_movimiento_nombre);
+      console.log("Cuenta al enter");
+      console.log(filtraCuenta);
       setControl(0);
-      filtraCuenta = Cuenta;
       document.getElementById("ListaCu").style.display = "none";
     }
   };
@@ -62,40 +61,39 @@ export default function CuentaBancaria() {
       <Styles>
         <p>
           Cuenta Bancaria:
-          
-            <input
-              type="text"
-              onChange={handleInputChange}
-              onKeyDown={Teclapresionada}
-              value={Cuenta}
-              id="Usuarios"
-              name="usuarios"
-              placeholder="Buscar"
-              className="cuentas-control"
-            />
-            {Mensaje} 
+          <input
+            type="text"
+            onChange={handleInputChange}
+            onKeyDown={Teclapresionada}
+            value={Cuenta}
+            id="Usuarios"
+            name="usuarios"
+            placeholder="Buscar"
+            className="cuentas-control"
+          />
+          {Mensaje}
         </p>
         <ul id="ListaCu" className="list-group" style={{ display: "none" }}>
-              {listaCuentas &&
-                listaCuentas.map((Dato, i) => {
-                  return (
-                    <li
-                      className="list-group-item"
-                      key={Dato.cuenta_bancaria_movimiento_nombre + i}
-                      onClick={() =>
-                        Clickenopciones(Dato.cuenta_bancaria_movimiento_nombre)
-                      }
-                      value={Dato.cuenta_bancaria_movimiento_nombre}
-                      style={{
-                        display: i <= Limite ? "list-item" : "none",
-                        background: i === ControlLista ? "aquamarine" : "gray",
-                      }}
-                    >
-                      {Dato.cuenta_bancaria_movimiento_nombre}{" "}
-                    </li>
-                  );
-                })}
-            </ul>
+          {listaCuentas &&
+            listaCuentas.map((Dato, i) => {
+              return (
+                <li
+                  className="list-group-item"
+                  key={Dato.cuenta_bancaria_movimiento_nombre + i}
+                  onClick={() =>
+                    Clickenopciones(Dato.cuenta_bancaria_movimiento_nombre)
+                  }
+                  value={Dato.cuenta_bancaria_movimiento_nombre}
+                  style={{
+                    display: i <= Limite ? "list-item" : "none",
+                    background: i === ControlLista ? "aquamarine" : "gray",
+                  }}
+                >
+                  {Dato.cuenta_bancaria_movimiento_nombre}{" "}
+                </li>
+              );
+            })}
+        </ul>
       </Styles>
     </div>
   );
