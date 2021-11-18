@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import headers from "./utils/headers";
+import {headers} from "./utils/headers";
 import PagosTable from "./components/pagosTable";
 import usePagos from "./hooks/usePagos";
 
@@ -17,48 +17,11 @@ export default function Home() {
   const contador = lista.contador;
 
   const columns = React.useMemo(
-    () => [
-      {
-        Header: "id",
-        accessor: "id", // accessor is the "key" in the data
-      },
-      {
-        Header: "Fecha",
-        accessor: "fecha_qn",
-      },
-      {
-        Header: "Num Operación",
-        accessor: "num_operacion",
-      },
-      {
-        Header: "Empresa",
-        accessor: "empresa_nombre",
-      },
-      {
-        Header: "Receptor",
-        accessor: "receptor_nombre",
-      },
-      {
-        Header: "Monto",
-        accessor: "monto",
-      },
-      {
-        Header: "Monto Recibido",
-        accessor: "monto_recibido ",
-      },
-      {
-        Header: "Movimiento",
-        accessor: "cuenta_bancaria_movimiento_nombre",
-      },
-      {
-        Header: "Status del pago",
-        accessor: "status_pago_nombre",
-      },
-    ],
-    []
+    () => headers,[]
   );
 
   const pagosMemo = React.useMemo(() => pagos, [pagos]);
+
   if (error) {
     return <p>Error</p>;
   }
@@ -100,6 +63,7 @@ const Styles = styled.div`
     }
     th,
     td {
+      height: 3.5rem;
       margin: 0;
       padding: 0.5rem;
       border-bottom: 1px solid black;

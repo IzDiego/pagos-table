@@ -87,15 +87,15 @@ export default function PagosTable({ skips, setPerPage, setPage, columns, data, 
           onClick={() => {
             setPage((s) => s + 1);
           }}
-          disabled={currentpage === totalPage}
+          disabled={currentpage === (totalPage/perPage)}
         >
           Siguiente
         </button>{' '}
         <button
           onClick={() => {
-            setPage(totalPage);
+            setPage((totalPage/perPage));
           }}
-          disabled={currentpage === totalPage}
+          disabled={currentpage === (totalPage/perPage)}
         >
           Ultima
         </button>{' '}
