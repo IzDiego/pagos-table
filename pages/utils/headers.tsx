@@ -1,5 +1,5 @@
 import React from "react";
-import { cambiaStatus } from "./headerFunction";
+import cambiaStatus from "./headerFunction";
 
 export const headers = [
     {
