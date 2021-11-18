@@ -12,15 +12,7 @@ export default function PagosTable({ skips, setPerPage, setPage, columns, data, 
     headerGroups,
     prepareRow,
     page,
-    // canPreviousPage,
-    // canNextPage,
     pageOptions,
-    // pageCount,
-    // gotoPage,
-    // nextPage,
-    // previousPage,
-    // setPageSize,
-    // Get the state from the instance
     state: { pageIndex, pageSize },
   } = useTable(
     {
@@ -35,11 +27,8 @@ export default function PagosTable({ skips, setPerPage, setPage, columns, data, 
           [state, currentpage]
         );
       },
-      initialState: { pageIndex: currentpage }, // Pass our hoisted table state
-      manualPagination: true, // Tell the usePagination
-      // hook that we'll handle our own data fetching
-      // This means we'll also have to provide our own
-      // pageCount.
+      initialState: { pageIndex: currentpage },
+      manualPagination: true,
       pageCount: (totalPage/perPage),
     },
     usePagination
@@ -49,22 +38,12 @@ export default function PagosTable({ skips, setPerPage, setPage, columns, data, 
     <>
       <table {...getTableProps()} className="table-fixed">
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.slice(0, 1).map((column) => (
-                <th
-                  {...column.getHeaderProps()}
-                  className="px-1 py-4 bg-red-100 capitalize w-96 text-left"
-                >
-                  {column.render('Header')}
-                </th>
-              ))}
-              {headerGroup.headers.slice(1).map((column) => (
-                <th
-                  {...column.getHeaderProps()}
-                  className="py-4 bg-red-100 capitalize w-1/6 text-left"
-                >
-                  {column.render('Header')}
+          {headerGroups.map((headerGroup) => (<tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps()}>
+                  <button>
+                    {column.render("Header")}
+                  </button>
                 </th>
               ))}
             </tr>
