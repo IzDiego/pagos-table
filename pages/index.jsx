@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
@@ -11,11 +12,11 @@ export default function Home() {
   const [perPage, setPerPage] = useState(5);
   const skips = (page - 1) * perPage;
 
-  const { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
+  let { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
 
   var lista = data = null;
-  const pagos = lista.misDatos;
-  const contador = lista.contador;
+  var pagos = lista.misDatos;
+  var contador = lista.contador;
 
   const columns = React.useMemo(
     () => headers,[headers]
