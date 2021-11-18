@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import { headers } from "./components/utils/headers";
+import { headers } from "../lib/utils/headers";
 import PagosTable from "./components/PagosTable";
 import usePagos from "./hooks/usePagos";
 import CuentaBancaria, { filtraCuenta } from "./components/CuentaBancaria"
