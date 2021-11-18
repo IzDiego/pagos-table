@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/jsx-no-undef */
 import React from 'react';
-import styled from 'styled-components';
 import { useTable, usePagination } from 'react-table';
 
 export default function PagosTable({ skips, setPerPage, setPage, columns, data, currentpage, perPage, totalPage }) {
