@@ -2,8 +2,6 @@ import React, { useState, useContext } from "react";
 import useCuentas from "../hooks/useCuentas";
 import styled from "styled-components";
 
-export var filtraCuenta = {};
-
 export default function CuentaBancaria() {
   const [Cuenta, setCuenta] = useState("");
   const [ListaCuentas, setListaCuentas] = useState([]);
@@ -41,9 +39,7 @@ export default function CuentaBancaria() {
     } else if (e.key === "Enter") {
       //      console.log(misDatos[ControlLista].Nombre)
       setCuenta(listaCuentas[ControlLista].cuenta_bancaria_movimiento_nombre);
-      filtraCuenta = (listaCuentas[ControlLista].cuenta_bancaria_movimiento_nombre);
       console.log("Cuenta al enter");
-      console.log(filtraCuenta);
       setControl(0);
       document.getElementById("ListaCu").style.display = "none";
     }
