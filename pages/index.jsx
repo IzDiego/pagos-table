@@ -11,7 +11,7 @@ export default function Home() {
   const [perPage, setPerPage] = useState(5);
   const skips = (page - 1) * perPage;
 
-  const { data, isLoading, error, isSuccess } = usePagos(skips, perPage, filtraCuenta);
+  const { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
 
   const lista = data ?? [];
   const pagos = lista.misDatos;
