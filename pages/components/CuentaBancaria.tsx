@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import useCuentas from "./hooks/useCuentas";
+import useCuentas from "../../lib/utils/hooks/useCuentas";
 import styled from "styled-components";
 
 export default function CuentaBancaria() {
