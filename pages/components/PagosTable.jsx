@@ -8,9 +8,9 @@ export default function PagosTable({ skips, setPerPage, setPage, columns, data, 
   const {
     getTableProps,
     getTableBodyProps,
-    headerGroups,
+    headerGroups = null,
     prepareRow,
-    page,
+    page = null,
     pageOptions,
     state: { pageIndex, pageSize },
   } = useTable(
