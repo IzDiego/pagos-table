@@ -10,7 +10,6 @@ export default function Home() {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const skips = (page - 1) * perPage;
-  console.log(filtraCuenta);
 
   const { data, isLoading, error, isSuccess } = usePagos(skips, perPage, filtraCuenta);
 
