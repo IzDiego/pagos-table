@@ -1,3 +1,6 @@
+import React from "react";
+import { cambiaStatus } from "./headerFunction";
+
 export const headers = [
     {
       Header: "id",
@@ -32,7 +35,11 @@ export const headers = [
       accessor: "cuenta_bancaria_movimiento_nombre"
     },
     {
-      Header: "Status del pago",
+      Header: ()=> {
+        return (
+          cambiaStatus()
+        );
+      },
       accessor: "status_pago_nombre"
     }
   ]

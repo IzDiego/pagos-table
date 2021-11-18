@@ -57,7 +57,7 @@ export default function CuentaBancaria() {
       <Styles>
         <p>
           Cuenta Bancaria:
-          <div>
+          
             <input
               type="text"
               onChange={handleInputChange}
@@ -68,9 +68,9 @@ export default function CuentaBancaria() {
               placeholder="Buscar"
               className="cuentas-control"
             />
-
-            {Mensaje}
-            <ul id="ListaCu" className="list-group" style={{ display: "none" }}>
+            {Mensaje} 
+        </p>
+        <ul id="ListaCu" className="list-group" style={{ display: "none" }}>
               {listaCuentas &&
                 listaCuentas.map((Dato, i) => {
                   return (
@@ -91,8 +91,6 @@ export default function CuentaBancaria() {
                   );
                 })}
             </ul>
-          </div>
-        </p>
       </Styles>
     </div>
   );
@@ -103,10 +101,10 @@ const Styles = styled.div`
     background-color: white;
     display: none;
     list-style-type: none;
-    margin: 0 0 0 10px;
+    margin: -18px 0 0 112px;
     padding: 0;
     position: absolute;
-    width: 150px;
+    width: 170px;
   }
 
   .list-group > li {
@@ -114,7 +112,7 @@ const Styles = styled.div`
     border-image: none;
     border-style: solid solid none;
     border-width: 1px 1px 0;
-    padding-left: 5px;
+    padding-left: 15px;
   }
 
   .list-group > li:last-child {

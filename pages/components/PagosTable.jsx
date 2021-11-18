@@ -39,10 +39,8 @@ export default function PagosTable({ skips, setPerPage, setPage, columns, data, 
         <thead>
           {headerGroups.map((headerGroup) => (<tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>
-                  <button>
+                <th {...column.getHeaderProps()}>                  
                     {column.render("Header")}
-                  </button>
                 </th>
               ))}
             </tr>

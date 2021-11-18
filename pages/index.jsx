@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import {headers} from "./utils/headers";
+import { headers } from "./utils/headers";
 import PagosTable from "./components/pagosTable";
 import usePagos from "./hooks/usePagos";
 import CuentaBancaria from "./components/CuentaBancaria"
@@ -18,7 +18,7 @@ export default function Home() {
   const contador = lista.contador;
 
   const columns = React.useMemo(
-    () => headers,[]
+    () => headers,[headers]
   );
   const pagosMemo = React.useMemo(() => pagos, [pagos]);
 
