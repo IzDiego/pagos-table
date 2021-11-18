@@ -13,7 +13,7 @@ export default function Home() {
 
   const { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
 
-  const lista = data ?? [];
+  const lista = data = null;
   const pagos = lista.misDatos;
   const contador = lista.contador;
 
