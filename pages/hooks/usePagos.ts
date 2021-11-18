@@ -5,7 +5,7 @@ export default function usePagos(skip, take) {
   return useQuery(
     ["pagos", link],
     async () => {
-      const res = await fetch(link);
+      const res = await fetch(link);      
       return res.json();
     },
     { keepPreviousData: true }
