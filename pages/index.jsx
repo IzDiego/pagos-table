@@ -64,7 +64,7 @@ const Styles = styled.div`
     }
     th,
     td {
-      height: 3.5rem;
+      height: 4.5rem;
       margin: 0;
       padding: 0.5rem;
       border-bottom: 1px solid black;

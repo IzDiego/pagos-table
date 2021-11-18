@@ -36,9 +36,7 @@ export const headers = [
     },
     {
       Header: ()=> {
-        return (
-          cambiaStatus()
-        );
+        return (cambiaStatus());
       },
       accessor: "status_pago_nombre"
     }
