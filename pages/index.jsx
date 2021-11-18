@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { headers } from "../lib/utils/headers";
 import PagosTable from "./components/PagosTable";
 import usePagos from "./hooks/usePagos";
-import CuentaBancaria, { filtraCuenta } from "./components/CuentaBancaria"
+import CuentaBancaria from "./components/CuentaBancaria"
 
 export default function Home() {
   const [page, setPage] = useState(1);
