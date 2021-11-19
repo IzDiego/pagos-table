@@ -13,15 +13,15 @@ export default function Home() {
   const skips: any = (page - 1) * perPage;
 
   let { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
-
-  var lista: any = {} = data;
+  var lista: any = {} 
+  if (isSuccess){lista = data;}
   var pagos: any = {} = lista.misDatos;
   var contador: any = {} = lista.contador;  
 
   const columns = React.useMemo(
     () => headers,[headers]
   );
-  const pagosMemo = React.useMemo(() => pagos, [pagos]);
+  const pagosMemo: any = React.useMemo(() => pagos, [pagos]);
 
   if (error) {
     return <p>Error</p>;
