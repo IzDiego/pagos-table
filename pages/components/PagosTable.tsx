@@ -11,7 +11,7 @@ export default function PagosTable({ setPerPage, setPage, columns, data, current
     getTableBodyProps,
     headerGroups = [],
     prepareRow,
-    page,
+    page = [],
     pageOptions,
     state: { pageIndex, pageSize },
   } = useTable(
