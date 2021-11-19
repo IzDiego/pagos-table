@@ -14,9 +14,9 @@ export default function Home() {
 
   let { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
 
-  var lista = data = {};
+  var lista: any = data;
   var pagos = lista.misDatos;
-  var contador = lista.contador;
+  var contador = lista.contador;  
 
   const columns = React.useMemo(
     () => headers,[headers]
@@ -43,7 +43,6 @@ export default function Home() {
         currentpage={page}
         perPage={perPage}
         totalPage={contador}
-        skip={skips}
         />
       </Styles>
     );

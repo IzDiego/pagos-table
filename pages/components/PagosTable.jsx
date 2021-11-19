@@ -5,7 +5,7 @@
 import React from 'react';
 import { useTable, usePagination } from 'react-table';
 
-export default function PagosTable({ skips, setPerPage, setPage, columns, data, currentpage, perPage, totalPage }) {
+export default function PagosTable({ setPerPage, setPage, columns, data, currentpage, perPage, totalPage }) {
   const {
     getTableProps,
     getTableBodyProps,

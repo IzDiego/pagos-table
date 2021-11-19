@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 
-export default function usePagos(skip, take, filtraCuenta) {
+export default function usePagos(skip, take) {
   /* console.log("filtrar cuenta dentro de usePagos");
   console.log({filtraCuenta});
   const filtro = JSON.stringify(filtraCuenta);
