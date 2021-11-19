@@ -10,13 +10,13 @@ import CuentaBancaria from "./components/CuentaBancaria"
 export default function Home() {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
-  const skips = (page - 1) * perPage;
+  const skips: any = (page - 1) * perPage;
 
   let { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
 
   var lista: any = data;
-  var pagos = lista.misDatos;
-  var contador = lista.contador;  
+  var pagos: any = lista.misDatos;
+  var contador: any = lista.contador;  
 
   const columns = React.useMemo(
     () => headers,[headers]
