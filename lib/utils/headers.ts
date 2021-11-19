@@ -1,7 +1,7 @@
 import React from "react";
 import cambiaStatus from "./headerFunction";
 
-export const headers = [
+export const headers: any = [
     {
       Header: "id",
       accessor: "id" // accessor is the "key" in the data
