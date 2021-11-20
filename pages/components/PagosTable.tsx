@@ -2,17 +2,33 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/jsx-no-undef */
-import React from 'react';
-import { useTable, usePagination } from 'react-table';
+import React from "react";
+import { useTable, usePagination } from "react-table";
 
-export default function PagosTable({ setPerPage, setPage, columns, data, currentpage, perPage, totalPage }) {
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableBody from "@mui/material/TableBody";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import Button from "@mui/material/Button";
+import { InputLabel, Select, MenuItem } from "@mui/material";
+
+export default function PagosTable({
+  setPerPage,
+  setPage,
+  columns,
+  data,
+  currentpage,
+  perPage,
+  totalPage,
+}) {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups = [],
     prepareRow,
     page = [],
-    pageOptions,
+    pageOptions = [],
     state: { pageIndex, pageSize },
   } = useTable(
     {
@@ -29,83 +45,85 @@ export default function PagosTable({ setPerPage, setPage, columns, data, current
       },
       initialState: { pageIndex: currentpage },
       manualPagination: true,
-      pageCount: (totalPage/perPage),
+      pageCount: totalPage / perPage,
     },
     usePagination
   );
 
   return (
     <>
-      <table {...getTableProps()} className="table-fixed">
-        <thead>
-          {headerGroups.map((headerGroup) => (<tr {...headerGroup.getHeaderGroupProps()}>
+      <Table {...getTableProps()} className="table-fixed">
+        <TableHead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>                  
-                    {column.render("Header")}
-                </th>
+                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
               ))}
             </tr>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
+        </TableHead>
+        <TableBody {...getTableBodyProps()}>
           {page.map((row, i) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <TableRow {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td {...cell.getCellProps()} className="truncate p-1 border-b-2">
-                      {cell.render('Cell')}
-                    </td>
+                    <TableCell
+                      {...cell.getCellProps()}
+                      className="truncate p-1 border-b-2"
+                    >
+                      {cell.render("Cell")}
+                    </TableCell>
                   );
                 })}
-              </tr>
+              </TableRow>
             );
           })}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
 
       <div className="flex justify-between bg-red-100 p-4">
-        <button
+        <Button variant="contained"
           onClick={() => {
             setPage(1);
           }}
           disabled={currentpage === 1}
         >
           Primera
-        </button>{' '}
-        <button
+        </Button>{" "}
+        <Button variant="contained"
           onClick={() => {
             setPage((s) => (s === 0 ? 0 : s - 1));
           }}
           disabled={currentpage === 1}
         >
           Anterior
-        </button>{' '}
-        <button
+        </Button>{" "}
+        <Button variant="contained"
           onClick={() => {
             setPage((s) => s + 1);
           }}
-          disabled={currentpage === (totalPage/perPage)}
+          disabled={currentpage === totalPage / perPage}
         >
           Siguiente
-        </button>{' '}
-        <button
+        </Button>{" "}
+        <Button variant="contained"
           onClick={() => {
-            setPage((totalPage/perPage));
+            setPage(totalPage / perPage);
           }}
-          disabled={currentpage === (totalPage/perPage)}
+          disabled={currentpage === totalPage / perPage}
         >
           Ultima
-        </button>{' '}
+        </Button>{" "}
         <span>
-          Pagina{' '}
+          Pagina{" "}
           <strong>
             {pageIndex} de {pageOptions.length}
-          </strong>{' '}
+          </strong>{" "}
         </span>
         <span>
-          | Ir a la pagina:{' '}
+          | Ir a la pagina:{" "}
           <input
             type="number"
             defaultValue={pageIndex}
@@ -117,8 +135,25 @@ export default function PagosTable({ setPerPage, setPage, columns, data, current
             }}
             className="w-20 border-2 rounded px-2"
           />
-        </span>{' '}
-        <select
+        </span>{" "}
+        <span>
+          <InputLabel id="demo-simple-select-label">Muestra</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={perPage}
+            label="Cinco"
+            onChange={(e) => {
+              // setPageSize(Number(e.target.value));
+              setPerPage(Number(e.target.value));
+            }}
+          >
+            <MenuItem value={5}>Cinco</MenuItem>
+            <MenuItem value={10}>Diez</MenuItem>
+            <MenuItem value={20}>Veinte</MenuItem>
+          </Select>
+        </span>
+        {/* <select
           value={perPage}
           onChange={(e) => {
             // setPageSize(Number(e.target.value));
@@ -130,7 +165,8 @@ export default function PagosTable({ setPerPage, setPage, columns, data, current
               Mostrar {pageSize}
             </option>
           ))}
-        </select>
+        </select> */}
+        de {totalPage} registros totales
       </div>
     </>
   );

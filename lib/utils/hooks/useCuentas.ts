@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 
-export default function useCuentas(cuenta) {
+export default function useCuentas(cuenta: string) {
   const link = `http://localhost:3000/api/obtenerCuenta?cuenta=${cuenta}`;
   return useQuery(
     ["cuenta", link],

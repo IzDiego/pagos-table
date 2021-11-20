@@ -5,7 +5,9 @@ import styled from "styled-components";
 import { headers } from "../lib/utils/headers";
 import PagosTable from "./components/PagosTable";
 import usePagos from "../lib/utils/hooks/usePagos";
-import CuentaBancaria from "./components/CuentaBancaria"
+import CuentaBancaria from "./components/CuentaBancaria";
+import CircularProgress from "@mui/material/CircularProgress";
+import Grid from "@mui/material/Grid";
 
 export default function Home() {
   const [page, setPage] = useState(1);
@@ -13,16 +15,16 @@ export default function Home() {
   const skips: any = (page - 1) * perPage;
 
   let { data, isLoading, error, isSuccess } = usePagos(skips, perPage);
-  var lista: any = {}; 
-  if (isSuccess){lista = data;}
-  var pagos: any = {}; 
+  var lista: any = {};
+  if (isSuccess) {
+    lista = data;
+  }
+  var pagos: any = {};
   pagos = lista.misDatos;
-  var contador: any = {}; 
-  contador = lista.contador;  
+  var contador: any = {};
+  contador = lista.contador;
 
-  const columns = React.useMemo(
-    () => headers,[headers]
-  );
+  const columns = React.useMemo(() => headers, [headers]);
   const pagosMemo: any = React.useMemo(() => pagos, [pagos]);
 
   if (error) {
@@ -30,27 +32,41 @@ export default function Home() {
   }
 
   if (isLoading) {
-    return <p>Cargando...</p>;
+    return showLoagingCentrado;
   }
 
-  if (isSuccess){
+  if (isSuccess) {
     return (
       <Styles>
-        <CuentaBancaria/>
-        <PagosTable 
-        data={pagosMemo}
-        columns={columns}
-        setPage={setPage}
-        setPerPage={setPerPage}
-        currentpage={page}
-        perPage={perPage}
-        totalPage={contador}
+        <CuentaBancaria />
+        <PagosTable
+          data={pagosMemo}
+          columns={columns}
+          setPage={setPage}
+          setPerPage={setPerPage}
+          currentpage={page}
+          perPage={perPage}
+          totalPage={contador}
         />
       </Styles>
     );
   }
-  
 }
+
+const showLoagingCentrado = (
+  <Grid
+    container
+    spacing={0}
+    direction="column"
+    alignItems="center"
+    justifyContent="center"
+    style={{ minHeight: "100vh" }}
+  >
+    <Grid item xs={3}>
+      <CircularProgress />
+    </Grid>
+  </Grid>
+);
 
 const Styles = styled.div`
   padding: 1rem;
@@ -76,4 +92,4 @@ const Styles = styled.div`
       }
     }
   }
-`
+`;
