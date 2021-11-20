@@ -11,7 +11,13 @@ import TableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Button from "@mui/material/Button";
-import { InputLabel, Select, MenuItem } from "@mui/material";
+import {
+  InputLabel,
+  Select,
+  MenuItem,
+  TablePagination,
+  TextField,
+} from "@mui/material";
 
 export default function PagosTable({
   setPerPage,
@@ -84,7 +90,8 @@ export default function PagosTable({
       </Table>
 
       <div className="flex justify-between bg-red-100 p-4">
-        <Button variant="contained"
+        <Button
+          variant="contained"
           onClick={() => {
             setPage(1);
           }}
@@ -92,7 +99,8 @@ export default function PagosTable({
         >
           Primera
         </Button>{" "}
-        <Button variant="contained"
+        <Button
+          variant="contained"
           onClick={() => {
             setPage((s) => (s === 0 ? 0 : s - 1));
           }}
@@ -100,7 +108,8 @@ export default function PagosTable({
         >
           Anterior
         </Button>{" "}
-        <Button variant="contained"
+        <Button
+          variant="contained"
           onClick={() => {
             setPage((s) => s + 1);
           }}
@@ -108,7 +117,8 @@ export default function PagosTable({
         >
           Siguiente
         </Button>{" "}
-        <Button variant="contained"
+        <Button
+          variant="contained"
           onClick={() => {
             setPage(totalPage / perPage);
           }}
@@ -123,17 +133,17 @@ export default function PagosTable({
           </strong>{" "}
         </span>
         <span>
-          | Ir a la pagina:{" "}
-          <input
-            type="number"
+          | Ir a la pagina:{" "}          
+          <TextField
+            label="Estas en la pagina"
+            id="standard-number"
+            color="secondary"
             defaultValue={pageIndex}
-            min="1"
-            max={totalPage}
             onChange={(e) => {
               const page = e.target.value ? Number(e.target.value) : 1;
               setPage(page);
             }}
-            className="w-20 border-2 rounded px-2"
+            InputProps={{ inputProps: { max: (totalPage / perPage), min: 1 } }}
           />
         </span>{" "}
         <span>
@@ -165,7 +175,7 @@ export default function PagosTable({
               Mostrar {pageSize}
             </option>
           ))}
-        </select> */}
+        </select> */}{" "}
         de {totalPage} registros totales
       </div>
     </>
