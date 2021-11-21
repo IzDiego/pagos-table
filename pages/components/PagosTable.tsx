@@ -5,18 +5,17 @@
 import React from "react";
 import { useTable, usePagination } from "react-table";
 
-import Table from "@mui/material/Table";
-import TableHead from "@mui/material/TableHead";
-import TableBody from "@mui/material/TableBody";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import Button from "@mui/material/Button";
 import {
   InputLabel,
   Select,
   MenuItem,
-  TablePagination,
   TextField,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Button,
 } from "@mui/material";
 
 export default function PagosTable({
@@ -88,7 +87,7 @@ export default function PagosTable({
           })}
         </TableBody>
       </Table>
-
+      <br></br>
       <div className="flex justify-between bg-red-100 p-4">
         <Button
           variant="contained"
@@ -133,17 +132,18 @@ export default function PagosTable({
           </strong>{" "}
         </span>
         <span>
-          | Ir a la pagina:{" "}          
+          | Ir a la pagina:{" "}
           <TextField
             label="Estas en la pagina"
             id="standard-number"
             color="secondary"
+            size="small"
             defaultValue={pageIndex}
             onChange={(e) => {
               const page = e.target.value ? Number(e.target.value) : 1;
               setPage(page);
             }}
-            InputProps={{ inputProps: { max: (totalPage / perPage), min: 1 } }}
+            InputProps={{ inputProps: { max: totalPage / perPage, min: 1 } }}
           />
         </span>{" "}
         <span>

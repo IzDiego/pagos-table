@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useState } from "react";
-import styled from "styled-components";
 import { headers } from "../lib/utils/headers";
 import PagosTable from "./components/PagosTable";
 import usePagos from "../lib/utils/hooks/usePagos";
@@ -37,7 +36,7 @@ export default function Home() {
 
   if (isSuccess) {
     return (
-      <Styles>
+      <>
         <CuentaBancaria />
         <PagosTable
           data={pagosMemo}
@@ -48,7 +47,7 @@ export default function Home() {
           perPage={perPage}
           totalPage={contador}
         />
-      </Styles>
+        </>
     );
   }
 }
@@ -67,29 +66,3 @@ const showLoagingCentrado = (
     </Grid>
   </Grid>
 );
-
-const Styles = styled.div`
-  padding: 1rem;
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
-    th,
-    td {
-      height: 4.5rem;
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-`;
