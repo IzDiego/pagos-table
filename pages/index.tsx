@@ -37,7 +37,6 @@ export default function Home() {
   if (isSuccess) {
     return (
       <>
-        <CuentaBancaria />
         <PagosTable
           data={pagosMemo}
           columns={columns}
